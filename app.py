@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from datetime import datetime
+from datetime import datetime,timezone
 
 app = Flask(__name__)
 app.json.sort_keys = False
@@ -13,7 +13,7 @@ def api():
         {
         "slack_name": slack_name,
         "current_day": datetime.today().strftime("%A"),
-        "utc_time": datetime.now().isoformat(),
+        "utc_time": datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ'),
         "track": track,
         "github_file_url": "https://github.com/BobadeKenny/stage1api/blob/main/app.py",
         "github_repo_url": "https://github.com/BobadeKenny/stage1api",
